@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-r052#gc0&&*@k7h!-ewcsgt=p-1a$fva!lj=o8e25+eex6-ogy
 DEBUG = False
 
 
-ALLOWED_HOSTS = ['127.0.0.1','gluapp.herokuapp.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -81,15 +81,10 @@ WSGI_APPLICATION = 'Proyecto.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'base',
-        'USER': 'postgres',
-        'PASSWORD' : 'tlcg12b13l',
-        'HOST':'127.0.0.1',
-        'DATABASE_PORT':'5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 
 # Password validation
@@ -124,20 +119,27 @@ USE_L10N = True
 
 USE_TZ = True
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+def look_folder_tree(root):
+    result = ()
+    for dir_name, sub_dirs, file_names in os.walk(root):
+        for sub_dir_name in sub_dirs:
+            result += (os.path.join(dir_name, sub_dir_name),)
+    return result
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Django settings for project.
+
+PROJECT_DIR = os.path.dirname(__file__)
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),) 
+
+# URL prefix for static files.
+# Example: "http://example.com/static/", "http://static.example.com/"
+
 STATIC_URL = '/static/'
-
-# Extra places for collectstatic to find static files.
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = '/crud/listar'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
