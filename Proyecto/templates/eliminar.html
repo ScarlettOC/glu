@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}
+<h2>Eliminar: </h2>
+{% endblock %}
+
+{% block contenido %}
+<form method="POST">
+        <!-- Security token by Django -->
+        {% csrf_token %}
+        ¿Segro de eliminar este registro?
+        <input id="button" type="submit" value="Si" />
+        <br>
+        <p>
+        <a id="button" href="listar">Regresar </a>
+    </form>
+
+    <center> <img id="imagen2" src="{% static 'img/bolas1.png' %}"></center>
+
+{% endblock %}

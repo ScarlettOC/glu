@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% load static %}
+{% block titulo %}
+<h2>{{sentir.nombre}}</h2>
+{% endblock %}
+
+{% block contenido %}
+<p><strong><h3>Nombre: </strong>{{listas.nombre}}</p>
+<p><strong>Sentimiento: </strong>{{listas.sentimiento}}</p>
+<p><strong>Nota: </strong>{{listas.nota}}</p>
+<p><strong>Fecha de creación: </strong>{{listas.created_at}}</p>
+<p><strong>Fecha de actualización: </strong>{{listas.updated_at}}</p>
+
+<center><button onclick="location.href='listar'">Regresar</button></center>
+
+
+{% endblock %}

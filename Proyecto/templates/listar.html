@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/login.css'%}">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+
+   
+{% block titulo %}
+<h3>⭐ Listado de sentimientos ⭐</h3>
+{% endblock %}
+
+{% block contenido %}
+
+
+<center><table class="container">
+<tr>
+	<td align="center"><h5><strong>Nombre</strong></td>
+	<td align="center"><h5><strong>Sentimiento</strong></td>
+	<td align="center"><h5><strong>Imágen</strong></td>
+	<td align="center"><h5><strong>Creado</strong></td>
+	<td align="center"><h5><strong>Nota</strong></td>
+	<td align="center"><h5><strong>Eliminar</strong></td>
+	<td align="center"><h5><strong>Actualizar</strong></td>
+	<td align="center"><h5><strong>Ver</strong></td>
+</tr>
+<tbody>
+	{% for i in listas %}
+	<tr>
+		<td><h3>{{i.nombre }}</h3></td>
+		<td><h3>{{i.sentimiento}}</h3></td>
+		<td><img id="imagen2" src="{{MEDIA_URL}}{{i.image}}"alt="image"></td>
+		<td><h3>{{i.created_at}}</h3></td>
+		<td><h3>{{i.nota}}</h3></td>
+		<td><h3><a class="btn btn-danger btn-xs" href="{{i.pk}}/delete"></span>Eliminar</button></td>
+		<td><h3><a class="btn btn-info" href="{{i.pk}}/update">Actualizar</a></h3></td>
+		<td><h3><a class="btn btn-warning" href="{{i.pk}}">Ver</a></h3></td>
+	</tr>
+	</center>
+	{% endfor %}
+</tbody>
+
+</table>
+
+<p>
+<div class="contenedopdf">
+	<td><h3><a href="genpdf"></span>PDF</button></td>
+</div>
+	<form action="crear">
+		<button id="button" type="submit">Añadir a la lista</button>
+	</form>
+</p>
+{% endblock %}

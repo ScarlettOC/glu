@@ -1,0 +1,73 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+<! –– Head ––>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'css/login.css'%}">
+	<title>Base</title>
+
+</head>
+<! –– Tipografías ––>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+<body><! –– Cabecera 1 ––>
+
+	<div class="cabecera">
+        <center><center> <img id="imagen1" src="{% static 'img/logoGLu.png' %}"></center>
+    </div>
+
+<! –– Contenedor ––>
+<div id="contenedor">
+
+<section class="contenidoprincipal">
+
+<! –– Sección ––>
+<center>
+
+{% block titulo%}
+<h2>Añadir sentimiento</h2>
+{% endblock %}
+
+{% block contenido%}
+
+<div class="row">
+	<div class="col-12 col-md-6 offset-md-3">
+	<div class="card">
+		<div class="card-body">
+	<form action="" method="POST" enctype="multipart/form-data">
+		{% csrf_token %}
+		<h3>{{ form|crispy }}</h3>
+
+		<div class="d-flex justify-content-end">
+			<a id="button" href="listar">Regresar </a>
+			&nbsp;
+			<input type="submit" Value="Guardar" class="btn btn-primary">
+		<div>
+</div>
+	</form>
+	</div>
+</div>
+</div>
+</div>
+
+
+{% endblock %}
+</center>
+
+</section>
+</div>
+
+<! –– Pie ––>
+
+
+</html>
